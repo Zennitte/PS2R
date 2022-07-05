@@ -120,14 +120,6 @@ const StyledArrow = styled(DropdownMenuPrimitive.Arrow, {
   fill: "white",
 });
 
-const RightSlot = styled("div", {
-  marginLeft: "auto",
-  paddingLeft: 20,
-  color: mauve.mauve11,
-  ":focus > &": { color: "white" },
-  "[data-disabled] &": { color: mauve.mauve8 },
-});
-
 // Exports
 export const DropdownMenu = DropdownMenuPrimitive.Root;
 export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
@@ -178,7 +170,7 @@ export const Dropdown = () => {
         </DropdownMenuTrigger>
         <DropdownMenuContent sideOffset={5}>
           <DropdownMenuItem>
-            <Link to="/MeuPerfil" className="flex">
+            <Link to="/MeuPerfil" className="flex w-[100%] items-center">
               <PersonIcon color="black" />
               <p className="pl-3 text-black font-poppins">Meu Perfil</p>
             </Link>
@@ -186,13 +178,13 @@ export const Dropdown = () => {
           {parseJwt().role === "2" && (
             <>
               <DropdownMenuItem>
-                <Link to="/Cadastro" className="flex">
+                <Link to="/Cadastro" className="flex w-[100%] items-center">
                   <PlusIcon color="black"/>
                   <p className="pl-3 text-black font-poppins">Cadastro</p>
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Link to="/VerPerfis" className="flex">
+                <Link to="/VerPerfis" className="flex w-[100%] items-center">
                   <ListBulletIcon color="black" />
                   <p className="pl-3 text-black font-poppins">Ver Perfis</p>
                 </Link>
@@ -202,13 +194,13 @@ export const Dropdown = () => {
           {parseJwt().role === "3" && (
             <>
               <DropdownMenuItem>
-                <Link to="/Cadastro" className="flex">
+                <Link to="/Cadastro" className="flex w-[100%] items-center">
                   <PlusIcon color="black" />
                   <p className="pl-3 text-black font-poppins">Cadastro</p>
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Link to="/VerPerfis" className="flex">
+                <Link to="/VerPerfis" className="flex w-[100%] items-center">
                   <ListBulletIcon color="black" />
                   <p className="pl-3 text-black font-poppins">Ver Perfis</p>
                 </Link>
@@ -216,7 +208,7 @@ export const Dropdown = () => {
             </>
           )}
           <DropdownMenuItem>
-            <button onClick={logOut} className="flex">
+            <button onClick={logOut} className="flex w-[100%] items-center">
               <ExitIcon color="black" />
               <p className="pl-3 text-black font-poppins">Sair</p>
             </button>

@@ -8,47 +8,6 @@ export default function Header() {
       <div className="w-[90%] flex justify-between items-center">
         <Logo />
         <Dropdown />
-        {/* <DropdownMenuPrimitive.Root >
-          <DropdownMenuPrimitive.Trigger asChild>
-            <button>
-              <HamburgerMenuIcon />
-            </button>
-          </DropdownMenuPrimitive.Trigger>
-          <DropdownMenuPrimitive.Content sideOffset={5}>
-            <DropdownMenuPrimitive.Item>
-              <Link to="/MeuPerfil">
-                <PersonIcon />
-              </Link>
-            </DropdownMenuPrimitive.Item>
-            {parseJwt().role === "2" && (
-              <>
-                <DropdownMenuPrimitive.Item>
-                  <Link to="/Cadastro">
-                    <PlusIcon />
-                  </Link>
-                </DropdownMenuPrimitive.Item>
-                <DropdownMenuPrimitive.Item>
-                  <Link to="/VerPerfis"></Link>
-                </DropdownMenuPrimitive.Item>
-              </>
-            )}
-            {parseJwt().role === "3" && (
-              <>
-                <DropdownMenuPrimitive.Item>
-                  <Link to="/Cadastro">
-                    <PlusIcon />
-                  </Link>
-                </DropdownMenuPrimitive.Item>
-                <DropdownMenuPrimitive.Item>
-                  <Link to="/VerPerfis"></Link>
-                </DropdownMenuPrimitive.Item>
-              </>
-            )}
-            <DropdownMenuPrimitive.Item>
-              <ExitIcon onClick={logOut} />
-            </DropdownMenuPrimitive.Item>
-          </DropdownMenuPrimitive.Content>
-        </DropdownMenuPrimitive.Root> */}
       </div>
     </header>
   );

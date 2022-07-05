@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { parseJwt, usuarioAutenticado } from "./services/auth";
 
 import Login from "./pages/login/Login";
-import Cadastro from "./pages/cadastrarUsuario/cadastro";
+import Cadastro from "./pages/cadastrarUsuario/Cadastro";
 import EditarMeuPerfil from '././pages/editarPerfil/EditarMeuPerfil';
 import EditarPerfil from '././pages/editarPerfil/EditarPerfil';
 import MeuPerfil from './pages/perfil/MeuPerfil';
