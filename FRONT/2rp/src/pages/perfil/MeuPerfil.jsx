@@ -1,9 +1,11 @@
-function Login() {
+import Header from "../../components/header/Header"
+
+function MeuPerfil() {
     return (
       <>
-        <button className="bg-purple-600">Meu Perfil</button>
+        <Header/>
       </>
     )
   }
   
-  export default Login
+  export default MeuPerfil
