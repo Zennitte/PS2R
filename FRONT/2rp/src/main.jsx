@@ -8,7 +8,6 @@ import Cadastro from "./pages/cadastrarUsuario/Cadastro";
 import EditarMeuPerfil from '././pages/editarPerfil/EditarMeuPerfil';
 import EditarPerfil from '././pages/editarPerfil/EditarPerfil';
 import MeuPerfil from './pages/perfil/MeuPerfil';
-import Perfil from "./pages/perfil/Perfil";
 import VerPerfis from './pages/verPerfil/VerPerfis';
 
 import "./global.css";
@@ -52,7 +51,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/Cadastro" element={<PermissaoAdmRoot><Cadastro/></PermissaoAdmRoot>} />
         <Route path="/VerPerfis" element={<PermissaoAdmRoot><VerPerfis/></PermissaoAdmRoot>} />
         <Route path="/EditarPerfil" element={<PermissaoAdmRoot><EditarPerfil/></PermissaoAdmRoot>} />
-        <Route path="/Perfil" element={<PermissaoAdmRoot><Perfil/></PermissaoAdmRoot>} />
       </Routes>
     </div>
   </BrowserRouter>

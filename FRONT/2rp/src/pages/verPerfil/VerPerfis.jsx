@@ -2,12 +2,20 @@ import { useState, useEffect } from "react";
 import { api } from "../../services/api";
 
 import Header from "../../components/header/Header";
+import DialogBox from "../../components/dialog/Dialog";
 
-import Perfil from "../../assets/img/Perfil";
+import { useNavigate } from "react-router-dom";
 import { parseJwt } from "../../services/auth";
 
 function VerPerfis() {
   const [listaUsers, setListaUsers] = useState([]);
+
+  const navigate = useNavigate();
+
+  function redirectEditar(id) {
+    localStorage.setItem("perfil-editar", id);
+    navigate("/EditarPerfil");
+  }
 
   function listarUsuarios() {
     api
@@ -20,6 +28,23 @@ function VerPerfis() {
         if (resposta.status === 200) {
           console.log(resposta.data);
           setListaUsers(resposta.data);
+        }
+      })
+      .catch((erro) => {
+        console.log(erro);
+      });
+  }
+
+  function excluirUsuario(id) {
+    api
+      .delete("/Usuarios/ExcluirUsuario/" + id, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("usuario-login"),
+        },
+      })
+      .then((resposta) => {
+        if (resposta.status === 204) {
+          listarUsuarios();
         }
       })
       .catch((erro) => {
@@ -44,21 +69,43 @@ function VerPerfis() {
                   </div>
                   <div className="pl-2">
                     <strong className="font-poppins font-bold ">Email: </strong>
-                    <span className="capitalize font-poppins">{user.email}</span>
+                    <span className="capitalize font-poppins">
+                      {user.email}
+                    </span>
                   </div>
                   <div className="pl-2">
-                    <strong className="font-poppins font-bold ">Status: </strong>
-                    {user.situacao && <span className="capitalize font-poppins">Ativo</span>}
-                    {!user.situacao && <span className="capitalize font-poppins">Inativo</span>}
+                    <strong className="font-poppins font-bold ">
+                      Status:{" "}
+                    </strong>
+                    {user.situacao && (
+                      <span className="capitalize font-poppins">Ativo</span>
+                    )}
+                    {!user.situacao && (
+                      <span className="capitalize font-poppins">Inativo</span>
+                    )}
                   </div>
                   <div className="pl-2">
-                    <strong className="font-poppins font-bold ">Tipo de Usuario: </strong>
-                    <span className="capitalize font-poppins">{user.idTipoUsuarioNavigation.tipo}</span>
+                    <strong className="font-poppins font-bold ">
+                      Tipo de Usuario:{" "}
+                    </strong>
+                    <span className="capitalize font-poppins">
+                      {user.idTipoUsuarioNavigation.tipo}
+                    </span>
                   </div>
                   <div className="pl-2 mt-2 pb-2 flex items-center">
-                    <button className="bg-black rounded text-white w-[20%] capitalize font-poppins mr-3">Ver perfil</button>
+                    <button
+                      onClick={() => redirectEditar(user.idUsuario)}
+                      className="bg-black rounded text-white w-[20%] capitalize font-poppins mr-3"
+                    >
+                      Editar perfil
+                    </button>
                     {parseJwt().role === "3" && (
-                      <button className="bg-red-600 rounded text-white w-[20%] capitalize font-poppins">Deletar usuário</button>
+                      <button
+                        onClick={() => excluirUsuario(user.idUsuario)}
+                        className="bg-red-600 rounded text-white w-[20%] capitalize font-poppins"
+                      >
+                        Deletar usuário
+                      </button>
                     )}
                   </div>
                 </div>
